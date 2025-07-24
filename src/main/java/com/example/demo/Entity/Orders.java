@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -29,10 +30,10 @@ public class Orders {
     private Users user;
 
 
-    private Float totalPrice;
+    private BigDecimal totalPrice; //could be removed since it's already exist in the orderItems !
     private Timestamp orderTime;
-    private Long orderNumber;
-
+    //private Long orderNumber; //hedha lezmo ykoun automatique incrementation mte3o w unique w kol new day yet'reset'a
+    private String orderNumber;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

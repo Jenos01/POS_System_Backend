@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Setter
@@ -21,7 +22,7 @@ public class Payement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Float amount;
+    private BigDecimal amount;
     private String payment_type;
     private Timestamp payment_time;
 
