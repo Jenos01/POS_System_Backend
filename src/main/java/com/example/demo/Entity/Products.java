@@ -29,7 +29,7 @@ public class Products {
     private Integer qteStock; //this is for the inventory ! w nwalli fi kol marra yetechra w 7asb l qte li tchret inna9esHa w btbi3a 9bl hedha lkol ysir test aal qteStock bon mouch bch t7el mawdho3 l'inventroy à 100% hakka
 
     @ManyToOne
-    @JsonBackReference
+  //  @JsonBackReference
     @JoinColumn(name = "category_id")
     private Category category;
 

@@ -25,11 +25,11 @@ public class Users {
     private String password;
     private String email;
     private String phone;
-    private String role;
+    private String role; //i'll Enum (ki tbda taaref 7aja w t7b test3mlha bessif xd
 
 
 
-    @OneToMany(mappedBy = "user")
-    @JsonManagedReference
-    private List<Orders> orders;
+//    @OneToMany(mappedBy = "user")
+//    @JsonManagedReference
+//    private List<Orders> orders;
 }

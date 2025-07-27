@@ -2,6 +2,7 @@ package com.example.demo.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItems {
+public class OrderItems {   //a join-table
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,17 +27,18 @@ public class OrderItems {
 
     private BigDecimal unitPrice; //this is for the part of price -500 etc ... not sure about it
 
-    //w menha nwalli n7sb l totalPrice
-    private BigDecimal totalPrice; // = quantity * unitPrice
+    //no need to store it, i'll calculate it when i need it :)
+//    private BigDecimal totalPrice; // = quantity * unitPrice3
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonBackReference
+   // @JsonBackReference
+    //@JsonIgnore
     private Orders order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    @JsonBackReference
+  //  @JsonBackReference
     private Products products;
 }
 

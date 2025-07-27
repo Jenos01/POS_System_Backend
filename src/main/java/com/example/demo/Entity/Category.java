@@ -23,18 +23,18 @@ public class Category {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Products> products;
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<Products> products;
 
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    @JsonBackReference(value = "category-parent")
+ //   @JsonBackReference(value = "category-parent")
     private Category parent;
 
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "category-parent")
-    private List<Category> children;
+//    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "category-parent")
+//    private List<Category> children;
 }

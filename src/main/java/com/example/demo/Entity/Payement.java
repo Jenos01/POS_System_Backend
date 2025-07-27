@@ -29,6 +29,6 @@ public class Payement {
 
     @OneToOne
     @JoinColumn(name = "order_id")
-    @JsonBackReference
+//    @JsonBackReference
     private Orders order;
 }
