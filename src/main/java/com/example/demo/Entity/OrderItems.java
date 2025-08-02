@@ -25,20 +25,24 @@ public class OrderItems {   //a join-table
 
     private Integer  quantity;
 
-    private BigDecimal unitPrice; //this is for the part of price -500 etc ... not sure about it
+    private BigDecimal unitPrice;
 
-    //no need to store it, i'll calculate it when i need it :)
-//    private BigDecimal totalPrice; // = quantity * unitPrice3
+    private BigDecimal totalItemPrice; // = quantity * unitPrice
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id")   // 5allitHa w zedt @JsonIgnore 5tr ki inna7eha ywalli ma3ach y3rf l'order (nrmlmnt)  w ywalli ma3ach y'recoogniz'i fi setOrder(this) fl method li fi Orders class
    // @JsonBackReference
-    //@JsonIgnore
+    @JsonIgnore
     private Orders order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
   //  @JsonBackReference
     private Products products;
+
+
+   public BigDecimal calculateTotalItemPrice() {
+       return totalItemPrice = unitPrice.multiply(BigDecimal.valueOf(quantity));
+   }
 }
 
