@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Setter
@@ -26,8 +27,10 @@ public class Products {
     private String name;
     private BigDecimal price;
     private boolean avaliable;
-    private Integer qteStock; //this is for the inventory ! w nwalli fi kol marra yetechra w 7asb l qte li tchret inna9esHa w btbi3a 9bl hedha lkol ysir test aal qteStock bon mouch bch t7el mawdho3 l'inventroy à 100% hakka
+   /* private Integer qteStock; */ ///replaced by inventory table
 
+    private BigDecimal taxRate;
+    //private Timestamp expiryDate; //to the inventory table xd  --->
     @ManyToOne
   //  @JsonBackReference
     @JoinColumn(name = "category_id")

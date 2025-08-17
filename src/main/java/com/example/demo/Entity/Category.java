@@ -22,10 +22,12 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    //index order priority
+    //disabled
 
-//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    private List<Products> products;
+    //    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    //    @JsonManagedReference
+    //    private List<Products> products;
 
 
     @ManyToOne

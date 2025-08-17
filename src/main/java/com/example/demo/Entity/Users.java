@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.example.demo.Enums.Role;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.Order;
@@ -25,7 +26,7 @@ public class Users {
     private String password;
     private String email;
     private String phone;
-    private String role; //i'll Enum (ki tbda taaref 7aja w t7b test3mlha bessif xd
+    private Role role;
 
 
 

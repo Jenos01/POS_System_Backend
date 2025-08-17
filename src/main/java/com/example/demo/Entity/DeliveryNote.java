@@ -1,35 +1,42 @@
 package com.example.demo.Entity;
-import com.example.demo.Enums.PaymentMethod;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 import jakarta.persistence.*;
-//import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-@Setter
+@Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-
-public class Payement {
+public class DeliveryNote { ///Bon de Livraison
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal amount;
-    private PaymentMethod paymentMethod;
-    private Timestamp paymentTime;
+    private String number;
 
+    private Timestamp deliveryDate;
+
+    private String deliveryAdress; // the client adress
+
+   // private String status; //
 
     @OneToOne
     @JoinColumn(name = "order_id")
-//    @JsonBackReference
     private Orders order;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    protected void setDeliveryAdress(){
+        setDeliveryAdress(client.getAdresse());
+    }
 }

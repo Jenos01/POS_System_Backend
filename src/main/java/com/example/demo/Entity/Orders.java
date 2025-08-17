@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Orders { //owner of relation order - orderItems
+public class Orders { ///owner of relation order - orderItems
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +40,13 @@ public class Orders { //owner of relation order - orderItems
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItems> orderItems;
 
-    public void addOrderItems(Products products) {
+    public void addOrderItems(Products products, Integer quantity, BigDecimal unitPrice, BigDecimal totalItemPrice) {
         OrderItems association = new OrderItems();
         association.setProducts(products);
         association.setOrder(this);
+        association.setQuantity(quantity);
+        association.setUnitPrice(unitPrice);
+        association.setTotalItemPrice(totalItemPrice);
 
         this.orderItems.add(association);
     }
@@ -55,7 +58,7 @@ public class Orders { //owner of relation order - orderItems
     private Client client;
 
 
-    public BigDecimal calculateTotalOrderPrice() {
+    protected void calculateTotalOrderPrice() {
 
         BigDecimal total = BigDecimal.ZERO;
 
@@ -64,8 +67,8 @@ public class Orders { //owner of relation order - orderItems
                 total = total.add(item.getTotalItemPrice());
             }
         }
-
-        return this.orderTotalPrice = total;
+        //return this.orderTotalPrice = total;
+        setOrderTotalPrice(total);
     }
 
 
